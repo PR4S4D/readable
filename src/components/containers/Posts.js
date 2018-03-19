@@ -3,7 +3,8 @@ import Posts from '../ui/Posts'
 import { fetchPosts } from '../../actions'
 
 const mapStateToProps = (state, props) => ({
-  posts: state.posts
+  posts: state.posts,
+  category: props.match.params.category ? props.match.params.category : 'all'
 })
 
 const mapDispatchToProps = dispatch => ({

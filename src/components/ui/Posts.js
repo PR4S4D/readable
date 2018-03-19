@@ -9,9 +9,10 @@ export default class Posts extends Component {
   }
 
   render () {
-    const {posts} = this.props
+    const {posts, category} = this.props
     return (
       <div>
+        <span>{category}</span>
         {posts && posts.map(post => (
            <div key={post.id}>
              {post.title}
