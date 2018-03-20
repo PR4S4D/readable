@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './style/App.css'
 import Header from './components/ui/Header'
-import Posts from './components/containers/Posts'
+import PostsContainer from './components/containers/PostsContainer'
 import PostDetail from './components/ui/PostDetail'
 import NoMatch from './components/ui/NoMatch'
 import { connect } from 'react-redux'
@@ -14,8 +14,8 @@ class App extends Component {
         <Header/>
         <main>
           <Switch>
-            <Route exact path='/' component={Posts} />
-            <Route exact path='/posts/:category' component={Posts} />
+            <Route exact path='/' component={PostsContainer} />
+            <Route exact path='/:category' component={PostsContainer} />
             <Route exact path='/post/:id' component={PostDetail} />
             <Route component={NoMatch} />
           </Switch>

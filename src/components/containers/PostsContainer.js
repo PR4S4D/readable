@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Posts from '../ui/Posts'
+import PostsContainer from '../ui/PostsContainer'
 import { fetchPosts } from '../../actions'
 
 const mapStateToProps = (state, props) => ({
@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts)
+export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer)
