@@ -1,1 +1,2 @@
 export const FETCH_POSTS = 'FETCH_POSTS'
+export const GET_CATEGORIES = 'GET_CATEGORIES'

@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
+import PostCategories from './PostCategories'
+import Posts from '../containers/Posts'
 
-export default class Posts extends Component {
+export default class PostsContainer extends Component {
 
   componentWillMount () {
     this
       .props
-      .fetchPosts()
+      .getCategories()
   }
 
   render () {
-    const {posts, category} = this.props
+    const {posts, categories} = this.props
+
     return (
       <div>
-        <span>{category}</span>
-        {posts && posts.map(post => (
-           <div key={post.id}>
-             {post.title}
-           </div>
-         ))}
+        {categories && <PostCategories categories={categories} />}
+        <Posts/>
       </div>
 
     )
