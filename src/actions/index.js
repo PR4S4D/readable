@@ -1,4 +1,4 @@
-import { FETCH_POSTS, GET_CATEGORIES } from './types'
+import { FETCH_POSTS, GET_CATEGORIES, SET_CATEGORY } from './types'
 
 const API_END_POINT = 'http://localhost:3004'
 const GET_REQUEST_HEADER = {
@@ -24,4 +24,11 @@ export const getCategories = () => dispatch => {
       type: GET_CATEGORIES,
       payload: json.categories
     }))
+}
+
+export const setCategory = (category) => dispatch => {
+  dispatch({
+    type: SET_CATEGORY,
+    payload: category
+  })
 }

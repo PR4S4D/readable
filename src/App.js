@@ -14,8 +14,7 @@ class App extends Component {
         <Header/>
         <main>
           <Switch>
-            <Route exact path='/' component={PostsContainer} />
-            <Route exact path='/:category' component={PostsContainer} />
+            <Route path='/:category?' component={PostsContainer} />
             <Route exact path='/post/:id' component={PostDetail} />
             <Route component={NoMatch} />
           </Switch>

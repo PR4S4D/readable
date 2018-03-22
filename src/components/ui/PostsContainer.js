@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PostCategories from './PostCategories'
+import PostCategories from '../containers/PostCategories'
 import Posts from '../containers/Posts'
 
 export default class PostsContainer extends Component {
@@ -11,11 +11,12 @@ export default class PostsContainer extends Component {
   }
 
   render () {
-    const {posts, categories} = this.props
+    console.log(this.props)
+    const {posts, categories, category} = this.props
 
     return (
       <div>
-        {categories && <PostCategories categories={categories} />}
+        {categories && <PostCategories />}
         <Posts/>
       </div>
 
