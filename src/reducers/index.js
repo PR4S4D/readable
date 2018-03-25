@@ -1,4 +1,4 @@
-import { FETCH_POSTS, GET_CATEGORIES, SET_CATEGORY } from '../actions/types'
+import { FETCH_POSTS, GET_CATEGORIES, SET_CATEGORY, UPVOTE_POST, DOWNVOTE_POST, DELETE_POST, EDIT_POST } from '../actions/types'
 import { combineReducers } from 'redux'
 
 const initialState = {
@@ -9,6 +9,18 @@ const posts = (state = [] , action) => {
   switch (action.type) {
     case FETCH_POSTS:
       return action.payload
+
+    case UPVOTE_POST:
+    case DOWNVOTE_POST:
+    case EDIT_POST:
+      return state.map(post => post.id === action.payload.id
+        ? action.payload
+        : post)
+
+
+    case DELETE_POST:
+      return state.filter(post => post.id !== action.payload)
+
     default:
       return state
   }
