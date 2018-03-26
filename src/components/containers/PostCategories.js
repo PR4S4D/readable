@@ -3,8 +3,8 @@ import PostCategories from '../ui/PostCategories'
 import { setCategory } from '../../actions'
 
 const mapStateToProps = (state, props) => ({
-  category: state.category,
-  categories: state.categories
+  categories: state.categories,
+  category: state.category
 })
 
 export default connect(mapStateToProps, {setCategory})(PostCategories)

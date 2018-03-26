@@ -8,7 +8,7 @@ const initialState = {
 const posts = (state = [] , action) => {
   switch (action.type) {
     case FETCH_POSTS:
-      return action.payload
+      return action.payload.filter(post => !post.deleted)
 
     case UPVOTE_POST:
     case DOWNVOTE_POST:
@@ -17,9 +17,8 @@ const posts = (state = [] , action) => {
         ? action.payload
         : post)
 
-
     case DELETE_POST:
-      return state.filter(post => post.id !== action.payload)
+      return state.filter(post => post.id !== action.payload.id)
 
     default:
       return state

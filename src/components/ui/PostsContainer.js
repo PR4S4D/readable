@@ -11,15 +11,12 @@ export default class PostsContainer extends Component {
   }
 
   render () {
-    console.log(this.props)
     const {posts, categories, category} = this.props
-
     return (
       <div>
-        {categories && <PostCategories />}
+        {categories && <PostCategories initialCategory={category} />}
         <Posts/>
       </div>
-
     )
   }
 }

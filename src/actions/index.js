@@ -30,6 +30,11 @@ const PUT_REQUEST_HEADER = {
   headers: REQUEST_HEADER
 }
 
+const DELETE_REQUEST_HEADER = {
+  method: 'DELETE',
+  headers: REQUEST_HEADER
+}
+
 const UPVOTE_OPTION = {
   'option': 'upVote'
 }
@@ -46,7 +51,7 @@ export const fetchPosts = () => dispatch => {
     })
 }
 
-export const getCategories = () => dispatch => {
+export const getCategories = () => (dispatch, props) => {
   fetch(`${API_END_POINT}/categories`, GET_REQUEST_HEADER)
     .then(res => res.json())
     .then(json => dispatch({type: GET_CATEGORIES, payload: json.categories}))
@@ -56,7 +61,7 @@ export const setCategory = (category) => dispatch => {
   dispatch({type: SET_CATEGORY, payload: category})
 }
 
-export const upvote = (postId) => dispatch => {
+export const upvotePost = (postId) => dispatch => {
   fetch(`${API_END_POINT}/posts/${postId}`, {
       ...POST_REQUEST_HEADER,
       body: JSON.stringify(UPVOTE_OPTION)
@@ -65,7 +70,7 @@ export const upvote = (postId) => dispatch => {
     .then(post => dispatch({type: UPVOTE_POST, payload: post}))
 }
 
-export const downvote = (postId) => dispatch => {
+export const downvotePost = (postId) => dispatch => {
   fetch(`${API_END_POINT}/posts/${postId}`, {
       ...POST_REQUEST_HEADER,
       body: JSON.stringify(DOWNVOTE_OPTION)
@@ -81,4 +86,12 @@ export const editPost = (post) => dispatch => {
     })
     .then(res => res.json())
     .then(post => dispatch({type: EDIT_POST, payload: post}))
+}
+
+export const deletePost = (postId) => dispatch => {
+  fetch(`${API_END_POINT}/posts/${postId}`, {
+      ...DELETE_REQUEST_HEADER
+    })
+    .then(res => res.json())
+    .then(post => dispatch({type: DELETE_POST, payload: post}))
 }
