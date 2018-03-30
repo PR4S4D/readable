@@ -5,7 +5,8 @@ import {
   UPVOTE_POST,
   DOWNVOTE_POST,
   EDIT_POST,
-  DELETE_POST
+  DELETE_POST,
+  CREATE_POST
 } from './types'
 
 const API_END_POINT = 'http://localhost:3004'
@@ -94,4 +95,13 @@ export const deletePost = (postId) => dispatch => {
     })
     .then(res => res.json())
     .then(post => dispatch({type: DELETE_POST, payload: post}))
+}
+
+export const createPost = (post) => dispatch => {
+  fetch(`${API_END_POINT}/posts`, {
+      ...POST_REQUEST_HEADER,
+      body: JSON.stringify(post)
+    })
+    .then(res => res.json())
+    .then(post => dispatch({type: CREATE_POST, payload: post}))
 }

@@ -1,9 +1,11 @@
 import CreatePost from '../ui/CreatePost'
 import { connect } from 'react-redux'
+import { createPost } from '../../actions'
 
-const mapStateToProps = (state, props) => {
-}
-const mapDispatchToProps = () => {
-}
+const mapStateToProps = (state, props) => ({
+  categories: state.categories
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePost)
+const mapDispatchToProps = {createPost}
+
+export default connect(mapStateToProps, {createPost})(CreatePost)

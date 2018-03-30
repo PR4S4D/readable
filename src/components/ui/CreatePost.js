@@ -3,11 +3,11 @@ import MenuItem from 'material-ui/Menu/MenuItem'
 import TextField from 'material-ui/TextField'
 import Input from 'material-ui/Input'
 import {FormControl} from 'material-ui/Form'
-import InputAdornment from 'material-ui/Input';
 import Button from 'material-ui/Button';
-import {withStyles} from 'material-ui/styles';
+import {uuid} from '../../utils'
 
 export default class CreatePost extends Component {
+
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
   };
@@ -15,6 +15,18 @@ export default class CreatePost extends Component {
   state = {
     category: ''
   }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this
+      .props
+      .createPost({
+        id: uuid(),
+        timestamp: Date.now(),
+        ...this.props
+      })
+  }
+
   render() {
     return (
       <div style={{
@@ -29,13 +41,20 @@ export default class CreatePost extends Component {
               onChange={this.handleChange('title')}
               required
               margin="normal"/>
-            <TextField id="body" label="Body" placeholder="Body" multiline margin="normal"/>
+            <TextField
+              id="body"
+              label="Body"
+              placeholder="Body"
+              onChange={this.handleChange('body')}
+              multiline
+              margin="normal"/>
           </FormControl>
 
           <TextField
             id="author"
             label="Author"
             placeholder="Author"
+            onChange={this.handleChange('author')}
             margin="normal"
             style={{
             marginRight: '4%',
@@ -53,11 +72,14 @@ export default class CreatePost extends Component {
             width: '48%'
           }}
             margin="normal">
-            {['react', 'redux', 'udacity'].map(option => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
+            {this
+              .props
+              .categories
+              .map(option => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
           </TextField>
           <Button
             variant="raised"
