@@ -4,26 +4,45 @@ import TextField from 'material-ui/TextField'
 import Input from 'material-ui/Input'
 import {FormControl} from 'material-ui/Form'
 import Button from 'material-ui/Button';
-import {uuid} from '../../utils'
+import {uuid, capitalize} from '../../utils'
 
 export default class CreatePost extends Component {
+
+  componentWillMount() {
+    if (this.props.categories.length === 0) {
+      this
+        .props
+        .getCategories()
+    }
+  }
 
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
   };
 
-  state = {
+  initialState = {
+    title: '',
+    body: '',
+    author: '',
     category: ''
   }
 
+  state = this.initialState
+
+  onReset = () => {
+    console.log('resetting')
+    this.setState(this.initialState)
+  }
+
   onSubmit = (e) => {
+    console.log('submitting the form')
     e.preventDefault();
     this
       .props
       .createPost({
         id: uuid(),
         timestamp: Date.now(),
-        ...this.props
+        ...this.state
       })
   }
 
@@ -33,18 +52,20 @@ export default class CreatePost extends Component {
         margin: 'auto',
         width: '60%'
       }}>
-        <form action=''>
+        <form onSubmit={this.onSubmit}>
           <FormControl fullWidth>
             <TextField
               id="title"
               label="Title"
               onChange={this.handleChange('title')}
+              value={this.state.title}
               required
               margin="normal"/>
             <TextField
               id="body"
               label="Body"
               placeholder="Body"
+              value={this.state.body}
               onChange={this.handleChange('body')}
               multiline
               margin="normal"/>
@@ -54,6 +75,7 @@ export default class CreatePost extends Component {
             id="author"
             label="Author"
             placeholder="Author"
+            value={this.state.author}
             onChange={this.handleChange('author')}
             margin="normal"
             style={{
@@ -76,8 +98,8 @@ export default class CreatePost extends Component {
               .props
               .categories
               .map(option => (
-                <MenuItem key={option} value={option}>
-                  {option}
+                <MenuItem key={option.name} value={option.name}>
+                  {capitalize(option.name)}
                 </MenuItem>
               ))}
           </TextField>
@@ -85,6 +107,7 @@ export default class CreatePost extends Component {
             variant="raised"
             size="small"
             color="primary"
+            onClick={this.onReset}
             style={{
             marginRight: '2%'
           }}>

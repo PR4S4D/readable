@@ -5,3 +5,7 @@ export const uuid = () => {
   })
 }
 // ref:  https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript?noredirect=1&lq=1
+
+export function capitalize (str = '') {
+  return typeof str !== 'string' ? '' : str[0].toUpperCase() + str.slice(1)
+}

@@ -98,6 +98,7 @@ export const deletePost = (postId) => dispatch => {
 }
 
 export const createPost = (post) => dispatch => {
+  console.log('creating post')
   fetch(`${API_END_POINT}/posts`, {
       ...POST_REQUEST_HEADER,
       body: JSON.stringify(post)

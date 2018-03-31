@@ -28,7 +28,7 @@ const posts = (state = [] , action) => {
   }
 }
 
-const categories = (state = [intialCategory] , action) => {
+const categories = (state = [] , action) => {
   switch (action.type) {
     case GET_CATEGORIES:
       return [
