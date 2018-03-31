@@ -6,7 +6,10 @@ import {
   DOWNVOTE_POST,
   EDIT_POST,
   DELETE_POST,
-  CREATE_POST
+  CREATE_POST,
+  UPDATE_POST,
+  CANCEL_EDIT,
+  UDPATE_COMPLETED
 } from './types'
 
 const API_END_POINT = 'http://localhost:3004'
@@ -80,13 +83,17 @@ export const downvotePost = (postId) => dispatch => {
     .then(post => dispatch({type: DOWNVOTE_POST, payload: post}))
 }
 
-export const editPost = (post) => dispatch => {
+export const updatePost = (post) => dispatch => {
   fetch(`${API_END_POINT}/posts/${post.id}`, {
       ...PUT_REQUEST_HEADER,
       body: JSON.stringify(post)
     })
     .then(res => res.json())
-    .then(post => dispatch({type: EDIT_POST, payload: post}))
+    .then(post => dispatch({type: UPDATE_POST, payload: post}))
+    .then(() => {
+      dispatch({type: CANCEL_EDIT, payload: {}})
+    })
+
 }
 
 export const deletePost = (postId) => dispatch => {
@@ -105,4 +112,13 @@ export const createPost = (post) => dispatch => {
     })
     .then(res => res.json())
     .then(post => dispatch({type: CREATE_POST, payload: post}))
+}
+
+export const editPost = (post) => dispatch => {
+  cancelEdit();
+  dispatch({type: EDIT_POST, payload: post})
+}
+
+export const cancelEdit = () => dispatch => {
+  dispatch({type: CANCEL_EDIT, payload: {}})
 }

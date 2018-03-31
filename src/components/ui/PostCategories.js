@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import { Paper } from 'material-ui'
 import { Link } from 'react-router-dom'
+import AppBar from 'material-ui/AppBar'
 
 export default class PostCategories extends Component {
 
@@ -14,10 +15,7 @@ export default class PostCategories extends Component {
     console.log('index', this.props)
 
     return (
-      <Paper style={{
- position: 'sticky',
- top: 0
- }}>
+      <AppBar style={{position: 'sticky',background: 'white'}}>
         <Tabs
           value={categoryIndex}
           indicatorColor='secondary'
@@ -32,7 +30,7 @@ export default class PostCategories extends Component {
                              component={Link}
                              to={cat.path} />)}
         </Tabs>
-      </Paper>
+      </AppBar>
     )
   }
 }

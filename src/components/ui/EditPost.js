@@ -6,51 +6,34 @@ import {FormControl} from 'material-ui/Form'
 import Button from 'material-ui/Button';
 import {uuid, capitalize} from '../../utils'
 
-export default class CreatePost extends Component {
+export default class EditPost extends Component {
 
-  componentWillMount() {
-    if (this.props.categories.length === 0) {
-      this
-        .props
-        .getCategories()
-    }
+  componentDidMount() {
+    if (this.props.post) 
+      this.setState({id: this.props.post.id, title: this.props.post.title, body: this.props.post.body})
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this
+      .props
+      .updatePost(this.state)
   }
 
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
   };
 
-  initialState = {
-    title: '',
-    body: '',
-    author: '',
-    category: ''
-  }
-
-  state = this.initialState
-
-  onReset = () => {
-    this.setState(this.initialState)
-  }
-
-  onSubmit = (e) => {
-    console.log('submitting the form')
-    e.preventDefault();
-    this
-      .props
-      .createPost({
-        id: uuid(),
-        timestamp: Date.now(),
-        ...this.state
-      })
-    this.onReset();
-  }
-
   render() {
+    if (!this.props.post || !this.state) 
+      return (<div/>)
+    const {author, category} = this.props.post
     return (
-      <div style={{
+      <div
+        style={{
         margin: 'auto',
-        width: '60%'
+        width: '80%',
+        padding: '5%'
       }}>
         <form onSubmit={this.onSubmit}>
           <FormControl fullWidth>
@@ -74,50 +57,40 @@ export default class CreatePost extends Component {
           <TextField
             id="author"
             label="Author"
-            placeholder="Author"
-            value={this.state.author}
-            onChange={this.handleChange('author')}
+            value={author}
+            disabled
             margin="normal"
             style={{
             marginRight: '4%',
             width: '48%'
           }}/>
+
           <TextField
-            id="select-category"
-            select
+            id="category"
             label="Category"
-            value={this.state.category}
-            onChange={this.handleChange('category')}
-            helperText="Please select your category"
-            required
+            value={category}
+            disabled
+            margin="normal"
             style={{
             width: '48%'
-          }}
-            margin="normal">
-            {this
-              .props
-              .categories
-              .map(option => (
-                <MenuItem key={option.name} value={option.name}>
-                  {capitalize(option.name)}
-                </MenuItem>
-              ))}
-          </TextField>
+          }}/>
+
           <Button
+            type="Submit"
             variant="raised"
             size="small"
             color="primary"
-            onClick={this.onReset}
             style={{
             marginRight: '2%'
           }}>
-            Reset
+            Update
           </Button>
-          <Button type="Submit" variant="raised" size="small" color="primary">
-            Submit
+          <Button color="secondary" onClick={() => this.props.cancelEdit()}>
+            Cancel
           </Button>
 
         </form>
+
       </div>
     )
   }
