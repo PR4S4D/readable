@@ -13,3 +13,8 @@ body {
 .post svg {
   position: static;
 }
+
+a {
+  text-decoration:none;
+   color: inherit;
+}

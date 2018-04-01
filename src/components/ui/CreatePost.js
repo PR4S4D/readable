@@ -1,23 +1,20 @@
-import React, {Component} from 'react'
-import MenuItem from 'material-ui/Menu/MenuItem'
-import TextField from 'material-ui/TextField'
-import Input from 'material-ui/Input'
-import {FormControl} from 'material-ui/Form'
+import React, { Component } from 'react';
+import MenuItem from 'material-ui/Menu/MenuItem';
+import TextField from 'material-ui/TextField';
+import Input from 'material-ui/Input';
+import { FormControl } from 'material-ui/Form';
 import Button from 'material-ui/Button';
-import {uuid, capitalize} from '../../utils'
+import { uuid, capitalize } from '../../utils';
 
 export default class CreatePost extends Component {
-
   componentWillMount() {
     if (this.props.categories.length === 0) {
-      this
-        .props
-        .getCategories()
+      this.props.getCategories();
     }
   }
 
   handleChange = name => event => {
-    this.setState({[name]: event.target.value});
+    this.setState({ [name]: event.target.value });
   };
 
   initialState = {
@@ -25,33 +22,32 @@ export default class CreatePost extends Component {
     body: '',
     author: '',
     category: ''
-  }
+  };
 
-  state = this.initialState
+  state = this.initialState;
 
   onReset = () => {
-    this.setState(this.initialState)
-  }
+    this.setState(this.initialState);
+  };
 
-  onSubmit = (e) => {
-    console.log('submitting the form')
+  onSubmit = e => {
+    console.log('submitting the form');
     e.preventDefault();
-    this
-      .props
-      .createPost({
-        id: uuid(),
-        timestamp: Date.now(),
-        ...this.state
-      })
+    this.props.createPost({
+      id: uuid(),
+      timestamp: Date.now(),
+      ...this.state
+    });
     this.onReset();
-  }
+  };
 
   render() {
     return (
-      <div style={{
-        margin: 'auto',
-        width: '60%'
-      }}>
+      <div
+        style={{
+          margin: 'auto',
+          width: '60%'
+        }}>
         <form onSubmit={this.onSubmit}>
           <FormControl fullWidth>
             <TextField
@@ -60,7 +56,8 @@ export default class CreatePost extends Component {
               onChange={this.handleChange('title')}
               value={this.state.title}
               required
-              margin="normal"/>
+              margin="normal"
+            />
             <TextField
               id="body"
               label="Body"
@@ -68,7 +65,8 @@ export default class CreatePost extends Component {
               value={this.state.body}
               onChange={this.handleChange('body')}
               multiline
-              margin="normal"/>
+              margin="normal"
+            />
           </FormControl>
 
           <TextField
@@ -79,9 +77,10 @@ export default class CreatePost extends Component {
             onChange={this.handleChange('author')}
             margin="normal"
             style={{
-            marginRight: '4%',
-            width: '48%'
-          }}/>
+              marginRight: '4%',
+              width: '48%'
+            }}
+          />
           <TextField
             id="select-category"
             select
@@ -91,17 +90,14 @@ export default class CreatePost extends Component {
             helperText="Please select your category"
             required
             style={{
-            width: '48%'
-          }}
+              width: '48%'
+            }}
             margin="normal">
-            {this
-              .props
-              .categories
-              .map(option => (
-                <MenuItem key={option.name} value={option.name}>
-                  {capitalize(option.name)}
-                </MenuItem>
-              ))}
+            {this.props.categories.map(option => (
+              <MenuItem key={option.name} value={option.name}>
+                {capitalize(option.name)}
+              </MenuItem>
+            ))}
           </TextField>
           <Button
             variant="raised"
@@ -109,16 +105,15 @@ export default class CreatePost extends Component {
             color="primary"
             onClick={this.onReset}
             style={{
-            marginRight: '2%'
-          }}>
+              marginRight: '2%'
+            }}>
             Reset
           </Button>
           <Button type="Submit" variant="raised" size="small" color="primary">
             Submit
           </Button>
-
         </form>
       </div>
-    )
+    );
   }
 }
