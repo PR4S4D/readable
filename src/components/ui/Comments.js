@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+import Comment from '../containers/Comment';
 
 export default class Comments extends Component {
-  componentDidUpdate() {
+  componentWillReceiveProps() {
     console.log(this.props);
-    this.props.fetchComments(this.props.postId);
+    if (!this.props.comments) this.props.fetchComments(this.props.postId);
   }
+
+  state = {
+    editPost: false
+  };
 
   render() {
     const { comments } = this.props;
     return (
       <div>
         {comments &&
-          comments.map(comment => <div key={comment.id}>{comment.id}</div>)}
+          comments.map((comment, i) => <Comment key={i} comment={comment} />)}
       </div>
     );
   }

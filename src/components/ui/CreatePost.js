@@ -26,7 +26,7 @@ export default class CreatePost extends Component {
 
   state = this.initialState;
 
-  onReset = () => {
+  reset = () => {
     this.setState(this.initialState);
   };
 
@@ -38,7 +38,7 @@ export default class CreatePost extends Component {
       timestamp: Date.now(),
       ...this.state
     });
-    this.onReset();
+    this.reset();
   };
 
   render() {

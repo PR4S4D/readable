@@ -12,6 +12,7 @@ import {
   FETCH_COMMENTS,
   UPDATE_COMMENT,
   UPVOTE_COMMENT,
+  ADD_COMMENT,
   EDIT_COMMENT,
   DELETE_COMMENT,
   DOWNVOTE_COMMENT
@@ -93,6 +94,8 @@ const comments = (state = null, action) => {
         comment => (comment.id === action.payload.id ? action.payload : comment)
       );
 
+    case ADD_COMMENT:
+      return [...state, action.payload];
     case DELETE_COMMENT:
       return state.filter(post => post.id !== action.payload.id);
 

@@ -11,6 +11,7 @@ import Button from 'material-ui/Button';
 import Collapse from 'material-ui/transitions/Collapse';
 import EditPost from '../containers/EditPost';
 import Comments from '../containers/Comments';
+import AddComment from '../containers/AddComment';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 
@@ -59,13 +60,13 @@ export default class PostDetails extends Component {
                 style={{
                   position: 'static'
                 }}>
-                <Button>{`${post.commentCount} comments`}</Button>
                 <IconButton>
                   <ThumbUpIcon onClick={() => upvote(post.id)} />
                 </IconButton>
                 <IconButton>
                   <ThumbDownIcon onClick={() => downvote(post.id)} />
                 </IconButton>
+                <Button>{`${post.commentCount} comments`}</Button>
                 <Tooltip
                   id="delete"
                   title="Delete Post"
@@ -84,7 +85,9 @@ export default class PostDetails extends Component {
             </Collapse>
           </Card>
         )}
+
         <Comments />
+        <AddComment />
       </div>
     );
   }

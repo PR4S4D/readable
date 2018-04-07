@@ -14,6 +14,7 @@ import {
   UPVOTE_COMMENT,
   DOWNVOTE_COMMENT,
   DELETE_COMMENT,
+  ADD_COMMENT,
   EDIT_COMMENT
 } from './types';
 
@@ -138,14 +139,22 @@ export const cancelEdit = () => dispatch => {
 //comments
 
 export const fetchComments = postId => dispatch => {
-  console.log('fetching', postId);
   fetch(`${API_END_POINT}/posts/${postId}/comments`, GET_REQUEST_HEADER)
     .then(res => res.json())
     .then(comments => dispatch({ type: FETCH_COMMENTS, payload: comments }));
 };
 
+export const addComment = comment => dispatch => {
+  fetch(`${API_END_POINT}/comments`, {
+    ...POST_REQUEST_HEADER,
+    body: JSON.stringify(comment)
+  })
+    .then(res => res.json())
+    .then(comment => dispatch({ type: ADD_COMMENT, payload: comment }));
+};
+
 export const upvoteComment = commentId => dispatch => {
-  fetch(`${API_END_POINT}/posts/${commentId}/comments`, {
+  fetch(`${API_END_POINT}/comments/${commentId}`, {
     ...POST_REQUEST_HEADER,
     body: JSON.stringify(UPVOTE_OPTION)
   })
