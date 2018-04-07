@@ -1,40 +1,41 @@
-import React, {Component} from 'react'
-import MenuItem from 'material-ui/Menu/MenuItem'
-import TextField from 'material-ui/TextField'
-import Input from 'material-ui/Input'
-import {FormControl} from 'material-ui/Form'
+import React, { Component } from 'react';
+import MenuItem from 'material-ui/Menu/MenuItem';
+import TextField from 'material-ui/TextField';
+import Input from 'material-ui/Input';
+import { FormControl } from 'material-ui/Form';
 import Button from 'material-ui/Button';
-import {uuid, capitalize} from '../../utils'
+import { uuid, capitalize } from '../../utils';
 
 export default class EditPost extends Component {
-
   componentDidMount() {
-    if (this.props.post) 
-      this.setState({id: this.props.post.id, title: this.props.post.title, body: this.props.post.body})
+    if (this.props.post)
+      this.setState({
+        id: this.props.post.id,
+        title: this.props.post.title,
+        body: this.props.post.body
+      });
   }
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
-    this
-      .props
-      .updatePost(this.state)
-  }
+    this.props.updatePost(this.state);
+  };
 
   handleChange = name => event => {
-    this.setState({[name]: event.target.value});
+    this.setState({ [name]: event.target.value });
   };
 
   render() {
-    if (!this.props.post || !this.state) 
-      return (<div/>)
-    const {author, category} = this.props.post
+    console.log(this.props, this.state);
+    if (!this.props.post || !this.state) return <div />;
+    const { author, category } = this.props.post;
     return (
       <div
         style={{
-        margin: 'auto',
-        width: '80%',
-        padding: '5%'
-      }}>
+          margin: 'auto',
+          width: '80%',
+          padding: '5%'
+        }}>
         <form onSubmit={this.onSubmit}>
           <FormControl fullWidth>
             <TextField
@@ -43,7 +44,8 @@ export default class EditPost extends Component {
               onChange={this.handleChange('title')}
               value={this.state.title}
               required
-              margin="normal"/>
+              margin="normal"
+            />
             <TextField
               id="body"
               label="Body"
@@ -51,7 +53,8 @@ export default class EditPost extends Component {
               value={this.state.body}
               onChange={this.handleChange('body')}
               multiline
-              margin="normal"/>
+              margin="normal"
+            />
           </FormControl>
 
           <TextField
@@ -61,9 +64,10 @@ export default class EditPost extends Component {
             disabled
             margin="normal"
             style={{
-            marginRight: '4%',
-            width: '48%'
-          }}/>
+              marginRight: '4%',
+              width: '48%'
+            }}
+          />
 
           <TextField
             id="category"
@@ -72,8 +76,9 @@ export default class EditPost extends Component {
             disabled
             margin="normal"
             style={{
-            width: '48%'
-          }}/>
+              width: '48%'
+            }}
+          />
 
           <Button
             type="Submit"
@@ -81,17 +86,15 @@ export default class EditPost extends Component {
             size="small"
             color="primary"
             style={{
-            marginRight: '2%'
-          }}>
+              marginRight: '2%'
+            }}>
             Update
           </Button>
           <Button color="secondary" onClick={() => this.props.cancelEdit()}>
             Cancel
           </Button>
-
         </form>
-
       </div>
-    )
+    );
   }
 }

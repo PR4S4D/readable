@@ -5,11 +5,13 @@ import {
   upvotePost,
   downvotePost,
   editPost,
-  deletePost
+  deletePost,
+  fetchPost
 } from '../../actions';
 
 const mapStateToProps = (state, props) => ({
-  post: state.posts.find(post => post.id === props.match.params.id),
+  postId: props.match.params.id,
+  post: props.post ? props.post : state.post,
   editPost: state.editPost
 });
 
@@ -18,7 +20,8 @@ const mapDispatchToProps = dispatch => ({
   upvote: postId => dispatch(upvotePost(postId)),
   downvote: postId => dispatch(downvotePost(postId)),
   deletePost: postId => dispatch(deletePost(postId)),
-  onEditPost: post => dispatch(editPost(post))
+  onEditPost: post => dispatch(editPost(post)),
+  fetchPost: post => dispatch(fetchPost(post))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);

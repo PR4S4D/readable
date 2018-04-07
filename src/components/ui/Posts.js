@@ -14,9 +14,9 @@ import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 
 export default class Posts extends Component {
-  componentWillMount = () => {
+  componentWillMount() {
     this.props.fetchPosts();
-  };
+  }
 
   state = {
     editPost: false
@@ -28,7 +28,7 @@ export default class Posts extends Component {
     const { posts, upvote, downvote, deletePost, onEditPost } = this.props;
     return (
       <div>
-        {posts.map((post, index) => (
+        {posts && posts.map((post, index) => (
           <Card
             key={post.id}
             style={{
