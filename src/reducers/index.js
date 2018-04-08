@@ -15,7 +15,9 @@ import {
   ADD_COMMENT,
   EDIT_COMMENT,
   DELETE_COMMENT,
-  DOWNVOTE_COMMENT
+  DOWNVOTE_COMMENT,
+  CANCEL_COMMENT,
+  FINISH_EDIT
 } from '../actions/types';
 import { combineReducers } from 'redux';
 
@@ -67,6 +69,7 @@ const editPost = (state = {}, action) => {
   switch (action.type) {
     case EDIT_POST:
     case CANCEL_EDIT:
+    case FINISH_EDIT:
       return action.payload;
     default:
       return state;
@@ -90,6 +93,7 @@ const comments = (state = null, action) => {
     case UPVOTE_COMMENT:
     case DOWNVOTE_COMMENT:
     case EDIT_COMMENT:
+    case UPDATE_COMMENT:
       return state.map(
         comment => (comment.id === action.payload.id ? action.payload : comment)
       );
@@ -104,11 +108,23 @@ const comments = (state = null, action) => {
   }
 };
 
+const editComment = (state = null, action) => {
+  switch (action.type) {
+    case EDIT_COMMENT:
+    case CANCEL_EDIT:
+    case FINISH_EDIT:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   posts,
   categories,
   category,
   editPost,
   post,
-  comments
+  comments,
+  editComment
 });

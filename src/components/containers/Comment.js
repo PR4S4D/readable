@@ -8,7 +8,11 @@ import {
 } from '../../actions';
 
 const mapStateToProps = (state, props) => ({
-  comment: props.comment
+  comment: props.comment,
+  edit:
+    state.editComment && state.editComment.id === props.comment.id
+      ? true
+      : false
 });
 
 const mapDispatchToProps = {

@@ -15,7 +15,9 @@ import {
   DOWNVOTE_COMMENT,
   DELETE_COMMENT,
   ADD_COMMENT,
-  EDIT_COMMENT
+  EDIT_COMMENT,
+  FINISH_EDIT,
+  UPDATE_COMMENT
 } from './types';
 
 const API_END_POINT = 'http://localhost:3004';
@@ -104,9 +106,7 @@ export const updatePost = post => dispatch => {
   })
     .then(res => res.json())
     .then(post => dispatch({ type: UPDATE_POST, payload: post }))
-    .then(() => {
-      dispatch({ type: CANCEL_EDIT, payload: {} });
-    });
+    .then(() => dispatch({ type: FINISH_EDIT, payload: {} }));
 };
 
 export const deletePost = postId => dispatch => {
@@ -134,6 +134,10 @@ export const editPost = post => dispatch => {
 
 export const cancelEdit = () => dispatch => {
   dispatch({ type: CANCEL_EDIT, payload: {} });
+};
+
+export const finishEdit = () => dispatch => {
+  dispatch({ type: FINISH_EDIT, payload: {} });
 };
 
 //comments
@@ -182,4 +186,14 @@ export const deleteComment = commentId => dispatch => {
 export const editComment = comment => dispatch => {
   cancelEdit();
   dispatch({ type: EDIT_COMMENT, payload: comment });
+};
+
+export const updateComment = comment => dispatch => {
+  fetch(`${API_END_POINT}/comments/${comment.id}`, {
+    ...PUT_REQUEST_HEADER,
+    body: JSON.stringify(comment)
+  })
+    .then(res => res.json())
+    .then(comment => dispatch({ type: UPDATE_COMMENT, payload: comment }))
+    .then(() => dispatch({ type: FINISH_EDIT, payload: {} }));
 };

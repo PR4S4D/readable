@@ -26,7 +26,7 @@ export default class PostDetails extends Component {
     editPost: false
   };
 
-  editPost = post => post.id === this.props.editPost.id;
+  editPost = post => post && post.id === this.props.editPost.id;
   render() {
     const { post, upvote, downvote, deletePost, onEditPost } = this.props;
     return (

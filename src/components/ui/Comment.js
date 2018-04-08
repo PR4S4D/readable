@@ -13,6 +13,7 @@ import EditPost from '../containers/EditPost';
 import Comments from '../containers/Comments';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
+import EditComment from '../containers/EditComment';
 
 export default class Comment extends Component {
   render() {
@@ -21,43 +22,51 @@ export default class Comment extends Component {
       upvoteComment,
       downvoteComment,
       deleteComment,
-      editComment
+      editComment,
+      edit
     } = this.props;
 
+    console.log('edit comment ', editComment);
     return (
       <div className="comment">
         {comment && (
           <Card key={comment.id}>
-            <CardContent>
-              <Typography>{comment.body}</Typography>
-              <Typography variant="caption">
-                September 14, 2015 ~ {comment.voteScore} votes ~
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <IconButton>
-                <ThumbUpIcon onClick={() => upvoteComment(comment.id)} />
-              </IconButton>
-              <IconButton>
-                <ThumbDownIcon onClick={() => downvoteComment(comment.id)} />
-              </IconButton>
-              <Tooltip
-                id="delete"
-                title="Delete Comment"
-                placement="bottom-end"
-                style={{
-                  marginLeft: 'auto'
-                }}>
-                <IconButton onClick={() => deleteComment(comment.id)}>
-                  <DeleteIcon />
+            <Collapse in={!edit}>
+              <CardContent>
+                <Typography>{comment.body}</Typography>
+                <Typography variant="caption">
+                  September 14, 2015 ~ {comment.voteScore} votes ~
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <IconButton>
+                  <ThumbUpIcon onClick={() => upvoteComment(comment.id)} />
                 </IconButton>
-              </Tooltip>
-              <Tooltip id="edit" title="Edit Comment" placement="bottom-end">
-                <IconButton onClick={e => editComment(comment.id)}>
-                  <EditIcon />
+                <IconButton>
+                  <ThumbDownIcon onClick={() => downvoteComment(comment.id)} />
                 </IconButton>
-              </Tooltip>
-            </CardActions>
+                <Tooltip
+                  id="delete"
+                  title="Delete Comment"
+                  placement="bottom-end"
+                  style={{
+                    marginLeft: 'auto'
+                  }}>
+                  <IconButton onClick={() => deleteComment(comment.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip id="edit" title="Edit Comment" placement="bottom-end">
+                  <IconButton onClick={e => editComment(comment)}>
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+              </CardActions>
+            </Collapse>
+
+            <Collapse in={edit}>
+              <EditComment comment={comment} />
+            </Collapse>
           </Card>
         )}
       </div>
