@@ -7,16 +7,7 @@ import Button from 'material-ui/Button';
 import { uuid, capitalize } from '../../utils';
 
 export default class CreatePost extends Component {
-  componentWillMount() {
-    if (this.props.categories.length === 0) {
-      this.props.getCategories();
-    }
-  }
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
-
+  postCreate = false;
   initialState = {
     title: '',
     body: '',
@@ -26,19 +17,32 @@ export default class CreatePost extends Component {
 
   state = this.initialState;
 
+  componentWillMount() {
+    if (this.props.categories.length === 0) {
+      this.props.getCategories();
+    }
+  }
+
+  componentDidUpdate() {
+    //redirect user to home once the form is submitted successfully
+    if (this.postCreate && this.props.ajax) this.props.history.push('/');
+  }
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };
+
   reset = () => {
     this.setState(this.initialState);
   };
 
   onSubmit = e => {
-    console.log('submitting the form');
     e.preventDefault();
     this.props.createPost({
       id: uuid(),
       timestamp: Date.now(),
       ...this.state
     });
-    this.reset();
+    this.postCreate = true;
   };
 
   render() {

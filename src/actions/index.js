@@ -17,7 +17,9 @@ import {
   ADD_COMMENT,
   EDIT_COMMENT,
   FINISH_EDIT,
-  UPDATE_COMMENT
+  UPDATE_COMMENT,
+  BEGIN_AJAX,
+  END_AJAX
 } from './types';
 
 const API_END_POINT = 'http://localhost:3004';
@@ -118,17 +120,18 @@ export const deletePost = postId => dispatch => {
 };
 
 export const createPost = post => dispatch => {
-  console.log('creating post');
+  dispatch(beginAjax());
   fetch(`${API_END_POINT}/posts`, {
     ...POST_REQUEST_HEADER,
     body: JSON.stringify(post)
   })
     .then(res => res.json())
-    .then(post => dispatch({ type: CREATE_POST, payload: post }));
+    .then(post => dispatch({ type: CREATE_POST, payload: post }))
+    .then(() => dispatch(endAjax()));
 };
 
 export const editPost = post => dispatch => {
-  cancelEdit();
+  dispatch(cancelEdit());
   dispatch({ type: EDIT_POST, payload: post });
 };
 
@@ -184,7 +187,7 @@ export const deleteComment = commentId => dispatch => {
 };
 
 export const editComment = comment => dispatch => {
-  cancelEdit();
+  dispatch(cancelEdit());
   dispatch({ type: EDIT_COMMENT, payload: comment });
 };
 
@@ -196,4 +199,13 @@ export const updateComment = comment => dispatch => {
     .then(res => res.json())
     .then(comment => dispatch({ type: UPDATE_COMMENT, payload: comment }))
     .then(() => dispatch({ type: FINISH_EDIT, payload: {} }));
+};
+
+// AJAX
+export const beginAjax = () => dispatch => {
+  dispatch({ type: BEGIN_AJAX, payload: true });
+};
+
+export const endAjax = () => dispatch => {
+  dispatch({ type: END_AJAX, payload: false });
 };

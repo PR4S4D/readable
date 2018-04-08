@@ -8,12 +8,13 @@ import { uuid, capitalize } from '../../utils';
 
 export default class EditPost extends Component {
   componentDidMount() {
-    if (this.props.post)
+    if (this.props.post) {
       this.setState({
         id: this.props.post.id,
         title: this.props.post.title,
         body: this.props.post.body
       });
+    }
   }
 
   onSubmit = e => {

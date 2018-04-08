@@ -3,6 +3,7 @@ export const FETCH_POST = 'FETCH_POST';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const SET_CATEGORY = 'SET_CATEGORY';
 export const CREATE_POST = 'CREATE_POST';
+export const FINISH_CREATE_POST = 'FINISH_CREATE_POST';
 export const EDIT_POST = 'EDIT_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
@@ -20,3 +21,7 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const FINISH_EDIT = 'FINISH_EDIT';
 export const UPDATE_COMMENT = 'UPDATE_COMMENT';
+
+//AJAX
+export const BEGIN_AJAX = 'BEGIN_AJAX';
+export const END_AJAX = 'END_AJAX';

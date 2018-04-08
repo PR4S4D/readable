@@ -17,7 +17,9 @@ import {
   DELETE_COMMENT,
   DOWNVOTE_COMMENT,
   CANCEL_COMMENT,
-  FINISH_EDIT
+  FINISH_EDIT,
+  END_AJAX,
+  BEGIN_AJAX
 } from '../actions/types';
 import { combineReducers } from 'redux';
 
@@ -119,6 +121,16 @@ const editComment = (state = null, action) => {
   }
 };
 
+const ajax = (state = false, action) => {
+  switch (action.type) {
+    case BEGIN_AJAX:
+    case END_AJAX:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   posts,
   categories,
@@ -126,5 +138,6 @@ export default combineReducers({
   editPost,
   post,
   comments,
-  editComment
+  editComment,
+  ajax
 });

@@ -9,6 +9,8 @@ import NoMatch from './NoMatch';
 export default class PostsContainer extends Component {
   componentWillMount() {
     this.props.getCategories();
+    //reset edit post and comment on route change
+    this.props.history.listen(() => this.props.cancelEdit());
   }
 
   componentDidUpdate() {

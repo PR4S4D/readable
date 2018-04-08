@@ -1,11 +1,12 @@
-import CreatePost from '../ui/CreatePost'
-import { connect } from 'react-redux'
-import { createPost, getCategories } from '../../actions'
+import CreatePost from '../ui/CreatePost';
+import { connect } from 'react-redux';
+import { createPost, getCategories } from '../../actions';
 
 const mapStateToProps = (state, props) => ({
-  categories: state.categories.filter(cat => cat.name !== 'all')
-})
+  categories: state.categories.filter(cat => cat.name !== 'all'),
+  ajax: state.ajax
+});
 
-const mapDispatchToProps = {createPost,getCategories}
+const mapDispatchToProps = { createPost, getCategories };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePost)
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);
