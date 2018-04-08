@@ -19,13 +19,21 @@ import {
   CANCEL_COMMENT,
   FINISH_EDIT,
   END_AJAX,
-  BEGIN_AJAX
+  BEGIN_AJAX,
+  SORT
 } from '../actions/types';
 import { combineReducers } from 'redux';
 
 const intialCategory = {
   name: 'all',
   path: '/'
+};
+
+const sort = (state = 0, action) => {
+  if (action.type === SORT) {
+    return action.payload;
+  }
+  return state;
 };
 
 const posts = (state = [], action) => {
@@ -139,5 +147,6 @@ export default combineReducers({
   post,
   comments,
   editComment,
-  ajax
+  ajax,
+  sort
 });

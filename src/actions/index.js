@@ -19,7 +19,8 @@ import {
   FINISH_EDIT,
   UPDATE_COMMENT,
   BEGIN_AJAX,
-  END_AJAX
+  END_AJAX,
+  SORT
 } from './types';
 
 const API_END_POINT = 'http://localhost:3004';
@@ -55,6 +56,10 @@ const UPVOTE_OPTION = {
 
 const DOWNVOTE_OPTION = {
   option: 'downVote'
+};
+
+export const sort = sortOption => dispatch => {
+  dispatch({ type: SORT, payload: sortOption });
 };
 
 export const fetchPosts = () => dispatch => {

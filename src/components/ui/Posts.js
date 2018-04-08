@@ -26,59 +26,63 @@ export default class Posts extends Component {
 
   render() {
     const { posts, upvote, downvote, deletePost, onEditPost } = this.props;
+    console.log('rendering posts');
     return (
       <div>
-        {posts && posts.map((post, index) => (
-          <Card
-            key={post.id}
-            style={{
-              width: '80%',
-              margin: 'auto',
-              marginTop: 10
-            }}
-            className="post">
-            <Collapse in={!this.editPost(post)} timeout={500}>
-              <CardHeader
-                avatar={<Avatar src={`/img/${post.category}.png`} />}
-                subheader={`September 14, 2016 ~ ${post.author} ~ ${
-                  post.voteScore
-                } votes`}
-                title={<NavLink to={`post/${post.id}`}> {post.title} </NavLink>}
-                action={
-                  <IconButton>
-                    <EditIcon onClick={e => onEditPost(post)} />
-                  </IconButton>
-                }
-              />
-              <CardActions
-                style={{
-                  position: 'static'
-                }}>
-                <Button>{`${post.commentCount} comments`}</Button>
-                <IconButton>
-                  <ThumbUpIcon onClick={() => upvote(post.id)} />
-                </IconButton>
-                <IconButton>
-                  <ThumbDownIcon onClick={() => downvote(post.id)} />
-                </IconButton>
-                <Tooltip
-                  id="delete"
-                  title="Delete Post"
-                  placement="bottom-end"
+        {posts &&
+          posts.map((post, index) => (
+            <Card
+              key={post.id}
+              style={{
+                width: '80%',
+                margin: 'auto',
+                marginTop: 10
+              }}
+              className="post">
+              <Collapse in={!this.editPost(post)} timeout={500}>
+                <CardHeader
+                  avatar={<Avatar src={`/img/${post.category}.png`} />}
+                  subheader={`September 14, 2016 ~ ${post.author} ~ ${
+                    post.voteScore
+                  } votes`}
+                  title={
+                    <NavLink to={`post/${post.id}`}> {post.title} </NavLink>
+                  }
+                  action={
+                    <IconButton>
+                      <EditIcon onClick={e => onEditPost(post)} />
+                    </IconButton>
+                  }
+                />
+                <CardActions
                   style={{
-                    marginLeft: 'auto'
+                    position: 'static'
                   }}>
-                  <IconButton onClick={() => deletePost(post.id)}>
-                    <DeleteIcon />
+                  <Button>{`${post.commentCount} comments`}</Button>
+                  <IconButton>
+                    <ThumbUpIcon onClick={() => upvote(post.id)} />
                   </IconButton>
-                </Tooltip>
-              </CardActions>
-            </Collapse>
-            <Collapse in={this.editPost(post)} timeout={500}>
-              {this.props.editPost && <EditPost post={post} />}
-            </Collapse>
-          </Card>
-        ))}
+                  <IconButton>
+                    <ThumbDownIcon onClick={() => downvote(post.id)} />
+                  </IconButton>
+                  <Tooltip
+                    id="delete"
+                    title="Delete Post"
+                    placement="bottom-end"
+                    style={{
+                      marginLeft: 'auto'
+                    }}>
+                    <IconButton onClick={() => deletePost(post.id)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </CardActions>
+              </Collapse>
+              <Collapse in={this.editPost(post)} timeout={500}>
+                {this.props.editPost && <EditPost post={post} />}
+              </Collapse>
+            </Card>
+          ))}
       </div>
     );
   }

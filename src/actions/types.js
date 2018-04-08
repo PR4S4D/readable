@@ -11,6 +11,7 @@ export const UPVOTE_POST = 'UPVOTE_POST';
 export const DOWNVOTE_POST = 'DOWNVOTE_POST';
 export const CANCEL_EDIT = 'CANCEL_EDIT';
 export const FINISH_EDIT_POST = 'FINISH_EDIT_POST';
+export const SORT = 'SORT';
 
 //Comments
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
