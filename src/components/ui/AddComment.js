@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
-import Input from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Button from 'material-ui/Button';
-import { uuid, capitalize } from '../../utils';
-import { Card, Paper } from 'material-ui';
+import { uuid } from '../../utils';
+import { Paper } from 'material-ui';
 
 export default class AddComment extends Component {
   initialState = {

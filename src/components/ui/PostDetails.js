@@ -12,8 +12,8 @@ import Collapse from 'material-ui/transitions/Collapse';
 import EditPost from '../containers/EditPost';
 import Comments from '../containers/Comments';
 import AddComment from '../containers/AddComment';
-import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
+import { getPostedTime } from '../../utils';
 
 export default class PostDetails extends Component {
   componentWillMount() {
@@ -43,9 +43,9 @@ export default class PostDetails extends Component {
             <Collapse in={!this.editPost(post)} timeout={500}>
               <CardHeader
                 avatar={<Avatar src={`/img/${post.category}.png`} />}
-                subheader={`September 14, 2016 ~ ${post.author} ~ ${
-                  post.voteScore
-                } votes`}
+                subheader={`${post.voteScore} Votes - Submitted ${getPostedTime(
+                  post.timestamp
+                )} by ${post.author}`}
                 title={post.title}
                 action={
                   <IconButton>

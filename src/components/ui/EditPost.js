@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
-import Input from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Button from 'material-ui/Button';
-import { uuid, capitalize } from '../../utils';
 
 export default class EditPost extends Component {
   componentDidMount() {
@@ -34,7 +31,6 @@ export default class EditPost extends Component {
       <div
         style={{
           margin: 'auto',
-          width: '80%',
           padding: '5%'
         }}>
         <form onSubmit={this.onSubmit}>

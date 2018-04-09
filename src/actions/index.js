@@ -26,7 +26,7 @@ import {
 const API_END_POINT = 'http://localhost:3004';
 
 const REQUEST_HEADER = {
-  'content-type': 'application/json',
+  'Content-type': 'application/json',
   Authorization: 'readable-lp'
 };
 

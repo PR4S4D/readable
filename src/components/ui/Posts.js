@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Tooltip from 'material-ui/Tooltip';
-import Card, { CardActions, CardHeader, CardContent } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+import Card, { CardActions, CardHeader } from 'material-ui/Card';
 import DeleteIcon from 'material-ui-icons/Delete';
 import ThumbUpIcon from 'material-ui-icons/ThumbUp';
 import ThumbDownIcon from 'material-ui-icons/ThumbDown';
@@ -12,6 +11,7 @@ import Collapse from 'material-ui/transitions/Collapse';
 import EditPost from '../containers/EditPost';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
+import { getPostedTime } from '../../utils';
 
 export default class Posts extends Component {
   componentWillMount() {
@@ -26,7 +26,6 @@ export default class Posts extends Component {
 
   render() {
     const { posts, upvote, downvote, deletePost, onEditPost } = this.props;
-    console.log('rendering posts');
     return (
       <div>
         {posts &&
@@ -42,9 +41,11 @@ export default class Posts extends Component {
               <Collapse in={!this.editPost(post)} timeout={500}>
                 <CardHeader
                   avatar={<Avatar src={`/img/${post.category}.png`} />}
-                  subheader={`September 14, 2016 ~ ${post.author} ~ ${
+                  subheader={`${
                     post.voteScore
-                  } votes`}
+                  } Votes - Submitted ${getPostedTime(post.timestamp)} by ${
+                    post.author
+                  }`}
                   title={
                     <NavLink to={`post/${post.id}`}> {post.title} </NavLink>
                   }

@@ -3,7 +3,7 @@ import PostCategories from '../containers/PostCategories';
 import Posts from '../containers/Posts';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import NoMatch from './NoMatch';
 
 export default class PostsContainer extends Component {
@@ -33,7 +33,7 @@ export default class PostsContainer extends Component {
   };
 
   render() {
-    const { posts, categories, category, location } = this.props;
+    const { category, location } = this.props;
     return (
       <div>
         {this.isValidPath() && (

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Book } from 'material-ui-icons';
 import Sort from 'material-ui-icons/Sort';
-import { Link } from 'react-router-dom';
-import Button from 'material-ui/Button';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import IconButton from 'material-ui/IconButton';
 
@@ -17,7 +14,6 @@ export default class SortMenu extends Component {
   };
 
   state = {
-    auth: true,
     anchorEl: null
   };
 
@@ -29,8 +25,8 @@ export default class SortMenu extends Component {
   ];
 
   render() {
-    const { auth, anchorEl } = this.state;
-    const { sortId, sort } = this.props;
+    const { anchorEl } = this.state;
+    const { sortId } = this.props;
     const open = Boolean(anchorEl);
     return (
       <div

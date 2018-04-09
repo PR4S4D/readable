@@ -33,7 +33,6 @@ export default class EditComment extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { comment } = this.props;
     if (!comment) return <div />;
     return (

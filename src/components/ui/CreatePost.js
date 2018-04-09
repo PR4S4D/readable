@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
-import Input from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Button from 'material-ui/Button';
 import { uuid, capitalize } from '../../utils';
