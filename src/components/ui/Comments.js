@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../containers/Comment';
+import Card from 'material-ui/Card';
 
 export default class Comments extends Component {
   componentWillReceiveProps() {
@@ -14,10 +15,10 @@ export default class Comments extends Component {
   render() {
     const { comments } = this.props;
     return (
-      <div>
+      <Card className="comment-section">
         {comments &&
           comments.map((comment, i) => <Comment key={i} comment={comment} />)}
-      </div>
+      </Card>
     );
   }
 }

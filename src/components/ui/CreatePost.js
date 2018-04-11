@@ -47,11 +47,12 @@ export default class CreatePost extends Component {
   render() {
     return (
       <div
-        style={{
+      /* style={{
           margin: 'auto',
           width: '60%'
-        }}>
-        <form onSubmit={this.onSubmit}>
+        }} */
+      >
+        <form onSubmit={this.onSubmit} className="create-post-form">
           <FormControl fullWidth>
             <TextField
               id="title"
@@ -73,29 +74,20 @@ export default class CreatePost extends Component {
           </FormControl>
 
           <TextField
-            id="author"
+            className="author"
             label="Author"
             placeholder="Author"
             value={this.state.author}
             onChange={this.handleChange('author')}
-            margin="normal"
-            style={{
-              marginRight: '4%',
-              width: '48%'
-            }}
           />
           <TextField
-            id="select-category"
+            className="select-category"
             select
             label="Category"
             value={this.state.category}
             onChange={this.handleChange('category')}
             helperText="Please select your category"
-            required
-            style={{
-              width: '48%'
-            }}
-            margin="normal">
+            required>
             {this.props.categories.map(option => (
               <MenuItem key={option.name} value={option.name}>
                 {capitalize(option.name)}

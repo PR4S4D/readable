@@ -28,11 +28,7 @@ export default class EditPost extends Component {
     if (!this.props.post || !this.state) return <div />;
     const { author, category } = this.props.post;
     return (
-      <div
-        style={{
-          margin: 'auto',
-          padding: '5%'
-        }}>
+      <div className="edit-post">
         <form onSubmit={this.onSubmit}>
           <FormControl fullWidth>
             <TextField
@@ -55,26 +51,19 @@ export default class EditPost extends Component {
           </FormControl>
 
           <TextField
-            id="author"
+            className="author"
             label="Author"
             value={author}
             disabled
             margin="normal"
-            style={{
-              marginRight: '4%',
-              width: '48%'
-            }}
           />
 
           <TextField
-            id="category"
+            className="select-category"
             label="Category"
             value={category}
             disabled
             margin="normal"
-            style={{
-              width: '48%'
-            }}
           />
 
           <Button

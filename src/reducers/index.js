@@ -16,6 +16,7 @@ import {
   EDIT_COMMENT,
   DELETE_COMMENT,
   DOWNVOTE_COMMENT,
+  CLEAR_COMMENTS,
   FINISH_EDIT,
   END_AJAX,
   BEGIN_AJAX,
@@ -106,6 +107,8 @@ const comments = (state = null, action) => {
       return state.map(
         comment => (comment.id === action.payload.id ? action.payload : comment)
       );
+    case CLEAR_COMMENTS:
+      return action.payload;
 
     case ADD_COMMENT:
       return [...state, action.payload];

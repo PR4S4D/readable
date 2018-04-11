@@ -17,9 +17,7 @@ import { getPostedTime } from '../../utils';
 
 export default class PostDetails extends Component {
   componentWillMount() {
-    /*   if (!this.props.post && !this.props.post.id) { */
     this.props.fetchPost(this.props.postId);
-    /* } */
   }
 
   state = {
@@ -32,14 +30,7 @@ export default class PostDetails extends Component {
     return (
       <div>
         {post && (
-          <Card
-            key={post.id}
-            style={{
-              width: '80%',
-              margin: 'auto',
-              marginTop: 10
-            }}
-            className="post">
+          <Card key={post.id} className="post-detail">
             <Collapse in={!this.editPost(post)} timeout={500}>
               <CardHeader
                 avatar={<Avatar src={`/img/${post.category}.png`} />}
@@ -56,10 +47,7 @@ export default class PostDetails extends Component {
               <CardContent>
                 <Typography>{post.body}</Typography>
               </CardContent>
-              <CardActions
-                style={{
-                  position: 'static'
-                }}>
+              <CardActions position="static">
                 <IconButton>
                   <ThumbUpIcon onClick={() => upvote(post.id)} />
                 </IconButton>

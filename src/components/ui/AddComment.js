@@ -32,18 +32,8 @@ export default class AddComment extends Component {
 
   render() {
     return (
-      <Paper
-        style={{
-          margin: 'auto',
-          width: '80%',
-          marginTop: 10
-        }}>
-        <form
-          onSubmit={this.addComment}
-          style={{
-            margin: '2%',
-            padding: '2%'
-          }}>
+      <Paper className="add-comment">
+        <form onSubmit={this.addComment} className="add-comment-form">
           <FormControl fullWidth>
             <TextField
               id="author"

@@ -4,7 +4,8 @@ import {
   fetchPosts,
   getCategories,
   setCategory,
-  cancelEdit
+  cancelEdit,
+  clearComments
 } from '../../actions';
 
 const mapStateToProps = (state, props) => ({
@@ -17,7 +18,8 @@ const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts()),
   getCategories: () => dispatch(getCategories()),
   setCategory: category => dispatch(setCategory(category)),
-  cancelEdit: () => dispatch(cancelEdit())
+  cancelEdit: () => dispatch(cancelEdit()),
+  clearComments: () => dispatch(clearComments())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);

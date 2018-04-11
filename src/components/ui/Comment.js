@@ -10,6 +10,7 @@ import IconButton from 'material-ui/IconButton';
 import Collapse from 'material-ui/transitions/Collapse';
 import EditComment from '../containers/EditComment';
 import { getPostedTime } from '../../utils';
+import Divider from 'material-ui/Divider';
 
 export default class Comment extends Component {
   render() {
@@ -25,7 +26,7 @@ export default class Comment extends Component {
     return (
       <div className="comment">
         {comment && (
-          <Card key={comment.id}>
+          <div key={comment.id}>
             <Collapse in={!edit}>
               <CardContent>
                 <Typography>{comment.body}</Typography>
@@ -63,7 +64,8 @@ export default class Comment extends Component {
             <Collapse in={edit}>
               <EditComment comment={comment} />
             </Collapse>
-          </Card>
+            <Divider/>
+          </div>
         )}
       </div>
     );

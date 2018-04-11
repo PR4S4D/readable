@@ -12,6 +12,7 @@ import EditPost from '../containers/EditPost';
 import { NavLink } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import { getPostedTime } from '../../utils';
+import Divider from 'material-ui/Divider';
 
 export default class Posts extends Component {
   componentWillMount() {
@@ -27,17 +28,10 @@ export default class Posts extends Component {
   render() {
     const { posts, upvote, downvote, deletePost, onEditPost } = this.props;
     return (
-      <div>
+      <Card className="posts">
         {posts &&
           posts.map((post, index) => (
-            <Card
-              key={post.id}
-              style={{
-                width: '80%',
-                margin: 'auto',
-                marginTop: 10
-              }}
-              className="post">
+            <div key={post.id} className="post">
               <Collapse in={!this.editPost(post)} timeout={500}>
                 <CardHeader
                   avatar={<Avatar src={`/img/${post.category}.png`} />}
@@ -82,9 +76,10 @@ export default class Posts extends Component {
               <Collapse in={this.editPost(post)} timeout={500}>
                 {this.props.editPost && <EditPost post={post} />}
               </Collapse>
-            </Card>
+              <Divider />
+            </div>
           ))}
-      </div>
+      </Card>
     );
   }
 }

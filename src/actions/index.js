@@ -14,6 +14,7 @@ import {
   UPVOTE_COMMENT,
   DOWNVOTE_COMMENT,
   DELETE_COMMENT,
+  CLEAR_COMMENTS,
   ADD_COMMENT,
   EDIT_COMMENT,
   FINISH_EDIT,
@@ -204,6 +205,10 @@ export const updateComment = comment => dispatch => {
     .then(res => res.json())
     .then(comment => dispatch({ type: UPDATE_COMMENT, payload: comment }))
     .then(() => dispatch({ type: FINISH_EDIT, payload: {} }));
+};
+
+export const clearComments = () => dispatch => {
+  dispatch({ type: CLEAR_COMMENTS, payload: null });
 };
 
 // AJAX

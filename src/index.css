@@ -19,8 +19,57 @@ a {
   color: inherit;
 }
 
-.comment {
-  width: 80%;
+.comment-section {
+  margin-top: 10px;
+}
+.posts,
+.post-detail,
+.add-comment,
+.comment-section {
   margin: auto;
   margin-top: 10px;
+  width: 80%;
+}
+
+.create-post-form {
+  margin: auto;
+  width: 60%;
+}
+
+.add-comment-form {
+  padding: 2%;
+}
+
+.author {
+  width: 48%;
+}
+.select-category {
+  margin-left: 4% !important;
+  width: 48%;
+}
+
+.edit-post {
+  margin: auto;
+  padding: 5%;
+}
+
+@media all and (max-width: 980px) {
+  .posts,
+  .post-detail,
+  .comment-section,
+  .add-comment {
+    width: 90%;
+  }
+
+  .create-post-form {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 640px) {
+  .author,
+  .select-category {
+    margin: 0 !important;
+    width: 100%;
+  }
 }
