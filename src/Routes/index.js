@@ -12,7 +12,7 @@ export default class Routes extends Component {
         <Switch>
           <Route exact path="/post/create" component={CreatePost} />
           <Route exact path="/:category?" component={PostsContainer} />
-          <Route exact path="/post/:id" component={PostDetails} />
+          <Route exact path="/:category/:id" component={PostDetails} />
           <Route component={NoMatch} />
         </Switch>
       </div>

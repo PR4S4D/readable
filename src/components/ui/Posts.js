@@ -41,7 +41,10 @@ export default class Posts extends Component {
                     post.author
                   }`}
                   title={
-                    <NavLink to={`post/${post.id}`}> {post.title} </NavLink>
+                    <NavLink to={`${post.category}/${post.id}`}>
+                      {' '}
+                      {post.title}{' '}
+                    </NavLink>
                   }
                   action={
                     <IconButton>
@@ -53,7 +56,11 @@ export default class Posts extends Component {
                   style={{
                     position: 'static'
                   }}>
-                  <Button component={NavLink} to={`post/${post.id}`}>{`${post.commentCount} comments`}</Button>
+                  <Button
+                    component={NavLink}
+                    to={`${post.category}/${post.id}`}>{`${
+                    post.commentCount
+                  } comments`}</Button>
                   <IconButton>
                     <ThumbUpIcon onClick={() => upvote(post.id)} />
                   </IconButton>

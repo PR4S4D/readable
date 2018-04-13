@@ -62,7 +62,7 @@ export default class PostDetails extends Component {
                   style={{
                     marginLeft: 'auto'
                   }}>
-                  <IconButton onClick={() => deletePost(post.id)}>
+                  <IconButton onClick={() => deletePost(post.id)} href="/">
                     <DeleteIcon />
                   </IconButton>
                 </Tooltip>
