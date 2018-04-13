@@ -35,7 +35,7 @@ export default class PostsContainer extends Component {
   };
 
   render() {
-    const { category, location } = this.props;
+    const { category, location, ajax } = this.props;
     return (
       <div>
         {this.isValidPath() && (
@@ -49,7 +49,7 @@ export default class PostsContainer extends Component {
             </NavLink>
           </div>
         )}
-        {!this.isValidPath() && <NoMatch />}
+        {!this.isValidPath() && !ajax && <NoMatch />}
       </div>
     );
   }

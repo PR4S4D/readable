@@ -12,7 +12,8 @@ import {
 const mapStateToProps = (state, props) => ({
   postId: props.match.params.id,
   post: props.post ? props.post : state.post,
-  editPost: state.editPost
+  editPost: state.editPost,
+  ajax: state.ajax
 });
 
 const mapDispatchToProps = dispatch => ({

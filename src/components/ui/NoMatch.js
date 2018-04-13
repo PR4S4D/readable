@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default () => {
-  return (
-    <div>
-      404
-    </div>
-  )
-}
+  return <div className="error-message">404</div>;
+};

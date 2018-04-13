@@ -11,7 +11,8 @@ import {
 const mapStateToProps = (state, props) => ({
   categories: state.categories,
   category: props.match.params.category ? props.match.params.category : '',
-  location: props.location && props.location.pathname
+  location: props.location && props.location.pathname,
+  ajax: state.ajax
 });
 
 const mapDispatchToProps = dispatch => ({

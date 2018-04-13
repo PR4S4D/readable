@@ -53,6 +53,12 @@ a {
   padding: 5%;
 }
 
+.error-message {
+  margin: auto;
+  text-align: center;
+  font-size: 24em;
+}
+
 @media all and (max-width: 980px) {
   .posts,
   .post-detail,

@@ -72,17 +72,21 @@ export const fetchPosts = () => dispatch => {
 };
 
 export const fetchPost = postId => dispatch => {
+  dispatch(beginAjax());
   fetch(`${API_END_POINT}/posts/${postId}`, GET_REQUEST_HEADER)
     .then(res => res.json())
     .then(post => {
       dispatch({ type: FETCH_POST, payload: post });
-    });
+    })
+    .then(() => dispatch(endAjax));
 };
 
 export const getCategories = () => (dispatch, props) => {
+  dispatch(beginAjax());
   fetch(`${API_END_POINT}/categories`, GET_REQUEST_HEADER)
     .then(res => res.json())
-    .then(json => dispatch({ type: GET_CATEGORIES, payload: json.categories }));
+    .then(json => dispatch({ type: GET_CATEGORIES, payload: json.categories }))
+    .then(() => dispatch(endAjax()));
 };
 
 export const setCategory = category => dispatch => {
