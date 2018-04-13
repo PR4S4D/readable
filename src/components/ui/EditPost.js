@@ -24,7 +24,6 @@ export default class EditPost extends Component {
   };
 
   render() {
-    console.log(this.props, this.state);
     if (!this.props.post || !this.state) return <div />;
     const { author, category } = this.props.post;
     return (

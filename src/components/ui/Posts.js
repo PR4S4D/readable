@@ -53,7 +53,7 @@ export default class Posts extends Component {
                   style={{
                     position: 'static'
                   }}>
-                  <Button>{`${post.commentCount} comments`}</Button>
+                  <Button component={NavLink} to={`post/${post.id}`}>{`${post.commentCount} comments`}</Button>
                   <IconButton>
                     <ThumbUpIcon onClick={() => upvote(post.id)} />
                   </IconButton>

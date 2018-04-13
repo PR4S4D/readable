@@ -18,8 +18,7 @@ const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts()),
   getCategories: () => dispatch(getCategories()),
   setCategory: category => dispatch(setCategory(category)),
-  cancelEdit: () => dispatch(cancelEdit()),
-  clearComments: () => dispatch(clearComments())
+  cancelEdit: () => dispatch(cancelEdit())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);

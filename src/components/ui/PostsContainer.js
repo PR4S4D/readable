@@ -12,7 +12,6 @@ export default class PostsContainer extends Component {
     //reset edit post and comment on route change
     this.props.history.listen(() => {
       this.props.cancelEdit();
-      this.props.clearComments();
     });
   }
 

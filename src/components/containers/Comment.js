@@ -4,7 +4,8 @@ import {
   upvoteComment,
   downvoteComment,
   deleteComment,
-  editComment
+  editComment,
+  clearComments
 } from '../../actions';
 
 const mapStateToProps = (state, props) => ({

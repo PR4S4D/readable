@@ -4,8 +4,15 @@ import Card from 'material-ui/Card';
 
 export default class Comments extends Component {
   componentWillReceiveProps() {
-    console.log(this.props);
     if (!this.props.comments) this.props.fetchComments(this.props.postId);
+  }
+
+  componentWillMount() {
+    if (!this.props.comments) this.props.fetchComments(this.props.postId);
+  }
+
+  componentWillUnmount() {
+    this.props.clearComments();
   }
 
   state = {
