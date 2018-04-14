@@ -1,7 +1,8 @@
 import { END_AJAX, BEGIN_AJAX } from '../actions/types';
 import { combineReducers } from 'redux';
-import * as posts from './PostReducers';
-import * as comments from './CommentReducers';
+import * as posts from './posts';
+import * as categories from './categories';
+import * as comments from './comments';
 
 const ajax = (state = false, action) => {
   switch (action.type) {
@@ -14,6 +15,7 @@ const ajax = (state = false, action) => {
 };
 
 export default combineReducers({
+  ...categories,
   ...posts,
   ...comments,
   ajax

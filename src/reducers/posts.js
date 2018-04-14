@@ -1,8 +1,6 @@
 import {
   FETCH_POSTS,
   FETCH_POST,
-  GET_CATEGORIES,
-  SET_CATEGORY,
   UPVOTE_POST,
   DOWNVOTE_POST,
   DELETE_POST,
@@ -16,11 +14,6 @@ import {
   DELETE_COMMENT
 } from '../actions/types';
 import { combineReducers } from 'redux';
-
-export const intialCategory = {
-  name: 'all',
-  path: ''
-};
 
 export const sort = (state = 0, action) => {
   if (action.type === SORT) {
@@ -45,24 +38,6 @@ export const posts = (state = [], action) => {
     case DELETE_POST:
       return state.filter(post => post.id !== action.payload.id);
 
-    default:
-      return state;
-  }
-};
-
-export const categories = (state = [], action) => {
-  switch (action.type) {
-    case GET_CATEGORIES:
-      return [intialCategory, ...action.payload];
-    default:
-      return state;
-  }
-};
-
-export const category = (state = 'all', action) => {
-  switch (action.type) {
-    case SET_CATEGORY:
-      return action.payload;
     default:
       return state;
   }
