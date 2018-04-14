@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 
 export default class PostCategories extends Component {
+  componentWillMount() {
+    if (!this.props.categories.length > 0) {
+      this.props.getCategories();
+    }
+  }
   render() {
     const { categories, category } = this.props;
-    let categoryIndex = category
-      ? categories.findIndex(obj => obj.name === category)
-      : 0;
+    let categoryIndex = categories.findIndex(obj => obj.name === category);
 
     return (
       <AppBar style={{ position: 'sticky', background: 'white' }}>
@@ -22,7 +25,7 @@ export default class PostCategories extends Component {
               key={cat.name}
               label={cat.name}
               component={Link}
-              to={cat.path}
+              to={`/${cat.path}`}
             />
           ))}
         </Tabs>

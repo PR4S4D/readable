@@ -26,7 +26,7 @@ import { combineReducers } from 'redux';
 
 const intialCategory = {
   name: 'all',
-  path: '/'
+  path: ''
 };
 
 const sort = (state = 0, action) => {

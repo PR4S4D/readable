@@ -15,10 +15,12 @@ import AddComment from '../containers/AddComment';
 import Avatar from 'material-ui/Avatar';
 import { getPostedTime } from '../../utils';
 import NoMatch from './NoMatch';
+import PostCategories from '../containers/PostCategories';
 
 export default class PostDetails extends Component {
   componentWillMount() {
     this.props.fetchPost(this.props.postId);
+    this.props.setCategory(null);
   }
 
   state = {
@@ -31,6 +33,7 @@ export default class PostDetails extends Component {
     return (
       post && (
         <div>
+          <PostCategories />
           {!post.error && (
             <div>
               <Card key={post.id} className="post-detail">

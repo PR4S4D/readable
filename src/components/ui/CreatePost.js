@@ -19,12 +19,13 @@ export default class CreatePost extends Component {
   componentWillMount() {
     if (this.props.categories.length === 0) {
       this.props.getCategories();
+    } else if (this.props.categories.length > 0) {
+      this.setState({ category: this.props.categories[0].name });
     }
   }
 
   componentWillReceiveProps() {
     if (this.props.categories.length > 0) {
-      console.log('category', this.props.categories[0].name);
       this.setState({ category: this.props.categories[0].name });
     }
   }
