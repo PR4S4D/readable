@@ -35,7 +35,6 @@ export default class SortMenu extends Component {
           right: '2%'
         }}>
         <IconButton
-          aria-haspopup="true"
           color="inherit"
           aria-owns={open ? 'menu-appbar' : null}
           aria-haspopup="true"

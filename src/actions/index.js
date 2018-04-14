@@ -9,6 +9,7 @@ import {
   DELETE_POST,
   CREATE_POST,
   UPDATE_POST,
+  CLEAR_POST,
   CANCEL_EDIT,
   FETCH_COMMENTS,
   UPVOTE_COMMENT,
@@ -139,6 +140,9 @@ export const createPost = post => dispatch => {
     .then(post => dispatch({ type: CREATE_POST, payload: post }))
     .then(() => dispatch(endAjax()));
 };
+
+export const clearPost = post => dispatch =>
+  dispatch({ type: CLEAR_POST, payload: null });
 
 export const editPost = post => dispatch => {
   dispatch(cancelEdit());

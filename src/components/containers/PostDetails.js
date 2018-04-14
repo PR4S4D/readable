@@ -7,7 +7,8 @@ import {
   editPost,
   deletePost,
   fetchPost,
-  setCategory
+  setCategory,
+  clearPost
 } from '../../actions';
 
 const mapStateToProps = (state, props) => ({
@@ -24,7 +25,8 @@ const mapDispatchToProps = dispatch => ({
   deletePost: postId => dispatch(deletePost(postId)),
   onEditPost: post => dispatch(editPost(post)),
   fetchPost: post => dispatch(fetchPost(post)),
-  setCategory: category => dispatch(setCategory(category))
+  setCategory: category => dispatch(setCategory(category)),
+  clearPost: () => dispatch(clearPost())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);

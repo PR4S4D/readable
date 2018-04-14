@@ -27,14 +27,27 @@ export default class PostDetails extends Component {
     editPost: false
   };
 
+  viewPost = () => {
+    if (this.props.post) {
+      if (!this.props.post.id || this.props.post.error) return false;
+      return true;
+    }
+    return false;
+  };
+
+  componentWillUnmount() {
+    this.props.clearPost();
+  }
+
   editPost = post => post && post.id === this.props.editPost.id;
   render() {
     const { post, upvote, downvote, deletePost, onEditPost } = this.props;
+
     return (
       post && (
         <div>
           <PostCategories />
-          {!post.error && (
+          {this.viewPost() && (
             <div>
               <Card key={post.id} className="post-detail">
                 <Collapse in={!this.editPost(post)} timeout={500}>
@@ -84,7 +97,7 @@ export default class PostDetails extends Component {
               <AddComment />
             </div>
           )}
-          {post.error && <NoMatch />}
+          {!this.viewPost() && <NoMatch />}
         </div>
       )
     );

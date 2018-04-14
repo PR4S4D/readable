@@ -4,8 +4,7 @@ import {
   fetchPosts,
   getCategories,
   setCategory,
-  cancelEdit,
-  clearComments
+  cancelEdit
 } from '../../actions';
 
 const mapStateToProps = (state, props) => ({

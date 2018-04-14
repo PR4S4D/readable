@@ -16,7 +16,7 @@ export default class PostCategories extends Component {
     return (
       <AppBar style={{ position: 'sticky', background: 'white' }}>
         <Tabs
-          value={categoryIndex}
+          value={categoryIndex >= 0 ? categoryIndex : false}
           indicatorColor="secondary"
           textColor="secondary"
           centered>

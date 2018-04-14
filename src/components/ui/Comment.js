@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import { CardActions, CardContent } from 'material-ui/Card';
 import Tooltip from 'material-ui/Tooltip';
 import Typography from 'material-ui/Typography';
 import DeleteIcon from 'material-ui-icons/Delete';
@@ -64,7 +64,7 @@ export default class Comment extends Component {
             <Collapse in={edit}>
               <EditComment comment={comment} />
             </Collapse>
-            <Divider/>
+            <Divider />
           </div>
         )}
       </div>
