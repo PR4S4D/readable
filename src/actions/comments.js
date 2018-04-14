@@ -1,5 +1,4 @@
 import * as API from '../utils/api';
-import { beginAjax, endAjax } from './ajax';
 import {
   FETCH_COMMENTS,
   ADD_COMMENT,

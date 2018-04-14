@@ -13,7 +13,6 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT
 } from '../actions/types';
-import { combineReducers } from 'redux';
 
 export const sort = (state = 0, action) => {
   if (action.type === SORT) {
