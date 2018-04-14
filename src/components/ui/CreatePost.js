@@ -22,6 +22,13 @@ export default class CreatePost extends Component {
     }
   }
 
+  componentWillReceiveProps() {
+    if (this.props.categories.length > 0) {
+      console.log('category', this.props.categories[0].name);
+      this.setState({ category: this.props.categories[0].name });
+    }
+  }
+
   componentDidUpdate() {
     //redirect user to home once the form is submitted successfully
     if (this.postCreate && this.props.ajax) this.props.history.push('/');
@@ -46,12 +53,7 @@ export default class CreatePost extends Component {
 
   render() {
     return (
-      <div
-      /* style={{
-          margin: 'auto',
-          width: '60%'
-        }} */
-      >
+      <div>
         <form onSubmit={this.onSubmit} className="create-post-form">
           <FormControl fullWidth>
             <TextField
@@ -69,6 +71,7 @@ export default class CreatePost extends Component {
               value={this.state.body}
               onChange={this.handleChange('body')}
               multiline
+              required
               margin="normal"
             />
           </FormControl>
@@ -77,6 +80,7 @@ export default class CreatePost extends Component {
             className="author"
             label="Author"
             placeholder="Author"
+            required
             value={this.state.author}
             onChange={this.handleChange('author')}
           />
@@ -86,8 +90,7 @@ export default class CreatePost extends Component {
             label="Category"
             value={this.state.category}
             onChange={this.handleChange('category')}
-            helperText="Please select your category"
-            required>
+            helperText="Please select your category">
             {this.props.categories.map(option => (
               <MenuItem key={option.name} value={option.name}>
                 {capitalize(option.name)}
