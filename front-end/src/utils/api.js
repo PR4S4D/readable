@@ -1,4 +1,4 @@
-export const API_END_POINT = 'http://localhost:3004';
+export const API_END_POINT = '';
 
 export const REQUEST_HEADER = {
   'Content-type': 'application/json',

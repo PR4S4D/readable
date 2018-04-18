@@ -13,13 +13,13 @@ import {
 } from './types';
 
 export const fetchComments = postId => dispatch => {
-  fetch(`${API.API_END_POINT}/posts/${postId}/comments`, API.GET_REQUEST_HEADER)
+  fetch(`/posts/${postId}/comments`, API.GET_REQUEST_HEADER)
     .then(res => res.json())
     .then(comments => dispatch({ type: FETCH_COMMENTS, payload: comments }));
 };
 
 export const addComment = comment => dispatch => {
-  fetch(`${API.API_END_POINT}/comments`, {
+  fetch(`/comments`, {
     ...API.POST_REQUEST_HEADER,
     body: JSON.stringify(comment)
   })
@@ -28,7 +28,7 @@ export const addComment = comment => dispatch => {
 };
 
 export const upvoteComment = commentId => dispatch => {
-  fetch(`${API.API_END_POINT}/comments/${commentId}`, {
+  fetch(`/comments/${commentId}`, {
     ...API.POST_REQUEST_HEADER,
     body: JSON.stringify(API.UPVOTE_OPTION)
   })
@@ -37,7 +37,7 @@ export const upvoteComment = commentId => dispatch => {
 };
 
 export const downvoteComment = commentId => dispatch => {
-  fetch(`${API.API_END_POINT}/comments/${commentId}`, {
+  fetch(`/comments/${commentId}`, {
     ...API.POST_REQUEST_HEADER,
     body: JSON.stringify(API.DOWNVOTE_OPTION)
   })
@@ -46,7 +46,7 @@ export const downvoteComment = commentId => dispatch => {
 };
 
 export const deleteComment = commentId => dispatch => {
-  fetch(`${API.API_END_POINT}/comments/${commentId}`, {
+  fetch(`/comments/${commentId}`, {
     ...API.DELETE_REQUEST_HEADER
   })
     .then(res => res.json())
@@ -59,7 +59,7 @@ export const editComment = comment => dispatch => {
 };
 
 export const updateComment = comment => dispatch => {
-  fetch(`${API.API_END_POINT}/comments/${comment.id}`, {
+  fetch(`/comments/${comment.id}`, {
     ...API.PUT_REQUEST_HEADER,
     body: JSON.stringify(comment)
   })

@@ -1,25 +1,25 @@
 {
-  "name": "readable",
-  "version": "0.1.0",
-  "private": true,
+  "name": "reddit-clone-server",
+  "version": "0.0.1",
+  "description": "A server for the Udacity Reddit Clone project for ReactND",
+  "main": "index.js",
+  "keywords": [
+    "udacity",
+    "redux",
+    "readable",
+    "react"
+  ],
+  "author": "David Harris",
+  "license": "ISC",
   "dependencies": {
-    "material-ui": "^1.0.0-beta.38",
-    "material-ui-icons": "^1.0.0-beta.36",
-    "moment": "^2.22.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "typeface-roboto": "0.0.54"
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "clone": "^2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "api-server": "node api-server/api-server/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node api-server",
+    "heroku-postbuild": "cd front-end/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   }
 }

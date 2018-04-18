@@ -20,7 +20,7 @@ export const sort = sortOption => dispatch => {
 };
 
 export const fetchPosts = () => dispatch => {
-  fetch(`${API.API_END_POINT}/posts/`, API.GET_REQUEST_HEADER)
+  fetch(`/posts/`, API.GET_REQUEST_HEADER)
     .then(res => res.json())
     .then(posts => {
       dispatch({ type: FETCH_POSTS, payload: posts });
@@ -29,7 +29,7 @@ export const fetchPosts = () => dispatch => {
 
 export const fetchPost = postId => dispatch => {
   dispatch(beginAjax());
-  fetch(`${API.API_END_POINT}/posts/${postId}`, API.GET_REQUEST_HEADER)
+  fetch(`/posts/${postId}`, API.GET_REQUEST_HEADER)
     .then(res => res.json())
     .then(post => {
       dispatch({ type: FETCH_POST, payload: post });
@@ -38,7 +38,7 @@ export const fetchPost = postId => dispatch => {
 };
 
 export const upvotePost = postId => dispatch => {
-  fetch(`${API.API_END_POINT}/posts/${postId}`, {
+  fetch(`/posts/${postId}`, {
     ...API.POST_REQUEST_HEADER,
     body: JSON.stringify(API.UPVOTE_OPTION)
   })
@@ -47,7 +47,7 @@ export const upvotePost = postId => dispatch => {
 };
 
 export const downvotePost = postId => dispatch => {
-  fetch(`${API.API_END_POINT}/posts/${postId}`, {
+  fetch(`/posts/${postId}`, {
     ...API.POST_REQUEST_HEADER,
     body: JSON.stringify(API.DOWNVOTE_OPTION)
   })
@@ -56,7 +56,7 @@ export const downvotePost = postId => dispatch => {
 };
 
 export const updatePost = post => dispatch => {
-  fetch(`${API.API_END_POINT}/posts/${post.id}`, {
+  fetch(`/posts/${post.id}`, {
     ...API.PUT_REQUEST_HEADER,
     body: JSON.stringify(post)
   })
@@ -66,7 +66,7 @@ export const updatePost = post => dispatch => {
 };
 
 export const deletePost = postId => dispatch => {
-  fetch(`${API.API_END_POINT}/posts/${postId}`, {
+  fetch(`/posts/${postId}`, {
     ...API.DELETE_REQUEST_HEADER
   })
     .then(res => res.json())
@@ -75,7 +75,7 @@ export const deletePost = postId => dispatch => {
 
 export const createPost = post => dispatch => {
   dispatch(beginAjax());
-  fetch(`${API.API_END_POINT}/posts`, {
+  fetch(`/posts`, {
     ...API.POST_REQUEST_HEADER,
     body: JSON.stringify(post)
   })
