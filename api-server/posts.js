@@ -24,6 +24,17 @@ const defaultData = {
     voteScore: -5,
     deleted: false,
     commentCount: 0
+  },
+  "28599a78-c806-45f3-bee4-2a1b732c881c": {
+    id: '28599a78-c806-45f3-bee4-2a1b732c881c',
+    timestamp: 1524162991168,
+    title: 'Udacity Students',
+    body: 'Udacity students are a community of global learners united in a shared goal of uplift and transformation. Our unique learning model enables an unprecedented degree of engagement with our students, and we are with them through every step of their learning journey—from the first moment a marketing team member might answer a question on Facebook, to the penultimate moment when a career team member receives word that a graduate has gotten a new job. Our mantra is Students First, and this is the light that guides us as we continue our mission to bring the highest quality learning possible, to as many students as we can possibly reach.',
+    author: 'Udacity',
+    category: 'udacity',
+    voteScore: 2,
+    deleted: false,
+    commentCount: 0
   }
 }
 
