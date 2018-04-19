@@ -8,13 +8,21 @@ or delete posts and comments.This app uses material design principles.
 
 To get started developing right away:
 
-* Install all project dependencies with `npm install`
-* Start the backend server with `npm run api-server`
-* Start the development server with `npm start`
+* Installing dependencies
+  * npm install
+  * cd front-end
+  * npm install
+* Start the backend server with `npm start`
+* Start the development server with `npm run front-end`
 
 ### Prerequisites
 
 [Node Package Manager](https://www.npmjs.com)
+
+### Deployment
+
+* Set NODE_ENV=PROD in production environment
+* Check out the app on [Heroku](https://reddit-udacity.herokuapp.com)
 
 ### Author
 

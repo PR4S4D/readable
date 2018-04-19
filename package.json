@@ -3,12 +3,7 @@
   "version": "0.0.1",
   "description": "A server for the Udacity Reddit Clone project for ReactND",
   "main": "index.js",
-  "keywords": [
-    "udacity",
-    "redux",
-    "readable",
-    "react"
-  ],
+  "keywords": ["udacity", "redux", "readable", "react"],
   "author": "David Harris",
   "license": "ISC",
   "dependencies": {
@@ -20,6 +15,8 @@
   },
   "scripts": {
     "start": "node api-server",
-    "heroku-postbuild": "cd front-end/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "front-end": "cd front-end && npm start",
+    "heroku-postbuild":
+      "cd front-end/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   }
 }
